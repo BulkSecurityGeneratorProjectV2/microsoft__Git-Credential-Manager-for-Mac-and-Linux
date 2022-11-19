@@ -15,6 +15,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class InsecureStoreTest
 {
@@ -91,7 +92,7 @@ public class InsecureStoreTest
         File tempFile = null;
         try
         {
-            tempFile = File.createTempFile(this.getClass().getSimpleName(), null);
+            tempFile = Files.createTempFile(this.getClass().getSimpleName(), null).toFile();
             Assert.assertEquals(0L, tempFile.length());
 
             final InsecureStore input = new InsecureStore(tempFile);
@@ -146,7 +147,7 @@ public class InsecureStoreTest
         File tempFile = null;
         try
         {
-            tempFile = File.createTempFile(this.getClass().getSimpleName(), null);
+            tempFile = Files.createTempFile(this.getClass().getSimpleName(), null).toFile();
             Assert.assertEquals(0L, tempFile.length());
 
             final InsecureStore cut = new InsecureStore(tempFile);
